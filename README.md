@@ -1,0 +1,10 @@
+# Samarina
+![image](https://github.com/user-attachments/assets/b8ceab10-d739-4fbb-8a99-34c341ce7eaf)
+![image](https://github.com/user-attachments/assets/81f08619-f9d3-47c6-815b-e4481306cfcd)
+![image](https://github.com/user-attachments/assets/64077fc5-4389-4988-92a1-a9ff6795bbaf)
+![image](https://github.com/user-attachments/assets/2ded414d-c904-4bf0-abb9-46e1347dfb2e)
+![image](https://github.com/user-attachments/assets/096d137f-ac27-4f06-b34c-145811425491)
+![image](https://github.com/user-attachments/assets/62f6614c-4cab-40c1-adcd-ddc28b57a8c8)
+![image](https://github.com/user-attachments/assets/0d3d8bbe-0e4b-4b63-823f-acc33bef2ed3)
+![image](https://github.com/user-attachments/assets/d082a419-fff9-429c-8e87-375bc6a45a90)
+![image](https://github.com/user-attachments/assets/0463eb55-3df1-4573-91b2-f06854cf5ca0)
