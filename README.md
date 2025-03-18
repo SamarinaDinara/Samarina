@@ -86,3 +86,202 @@ sudo systemctl enable docker --now
 Рисунок 4 - Автозапуск
 
 ## Задание 3
+
+Прописала команду (рис. 1):
+```
+COMVER=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
+```
+
+- Запрашивает данные о последнем релизе Docker Compose через GitHub API.
+- Извлекает из ответа значение поля tag_name (номер версии).
+- Сохраняет номер версии в переменную COMVER.
+Пример результата: COMVER="v2.20.2".
+
+![изображение](https://github.com/user-attachments/assets/40c49f05-46a5-4c89-a898-6a40cd412f3e)
+
+Рисунок 1 - Получает номер последней версии Docker Compose из GitHub
+
+Прописала команду (рис. 2):
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/$COMVER/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+```
+
+- curl -L
+  - curl — это утилита для загрузки файлов из интернета.
+  - -L указывает curl автоматически следовать перенаправлениям (например, если ссылка ведет на другой URL).
+- `"https://github.com/docker/compose/releases/download/$COMVER/docker-compose-$(uname -s)-$(uname -m)"`
+  - $COMVER: переменная, содержащая номер версии Docker Compose (например, v2.20.2).
+  - $(uname -s): команда, возвращающая название операционной системы (например, Linux).
+  - $(uname -m): команда, возвращающая архитектуру процессора (например, x86_64).
+- -o /usr/bin/docker-compose
+  - -o указывает, куда сохранить загруженный файл.
+  - /usr/bin/docker-compose — это путь, куда будет сохранён бинарный файл Docker Compose. Директория /usr/bin/ обычно находится в переменной PATH, что позволяет запускать Docker Compose из любой директории.
+
+![изображение](https://github.com/user-attachments/assets/a40d94e8-3228-4b5f-88b4-0206229d6875)
+
+Рисунок 2 - Скачивание бинарного файла
+
+Прописала команду (рис. 3):
+```
+sudo chmod +x /usr/bin/docker-compose
+```
+
+- chmod — это утилита для изменения прав доступа к файлам и директориям.
+- +x - Флаг +x добавляет атрибут "исполняемый" (execute) для файла. Это позволяет запускать файл как программу или скрипт.
+- /usr/bin/docker-compose - Это путь к файлу, который был скачан ранее (например, бинарный файл Docker Compose). После выполнения этой команды файл станет исполняемым.
+
+![изображение](https://github.com/user-attachments/assets/3bfba4ba-04d9-499c-8279-bd58ca7d21df)
+
+Рисунок 3 - Подготовка Docker-compose
+
+Прописала команду (рис. 4):
+```
+docker-compose --version
+```
+
+- Команда узнаёт версию Docker-compose
+
+![изображение](https://github.com/user-attachments/assets/2ab97683-1da7-4d8f-9c03-cffb8cdd6e07)
+
+Рисунок 4 - Версия
+
+Прописала команду (рис. 5):
+```
+sudo yum install git
+```
+
+- git — это распределённая система контроля версий, которая используется для отслеживания изменений в файлах и координации работы над проектами. Она широко применяется в разработке программного обеспечения, особенно в сочетании с платформами, такими как GitHub, GitLab и Bitbucket.
+
+![изображение](https://github.com/user-attachments/assets/e60ab238-10bf-42f3-88a8-d4c4297e431b)
+
+Рисунок 5 - Установка git
+
+Прописала команду (рис. 6):
+```
+git clone https://github.com/skl256/grafana_stack_for_docker.git
+```
+
+- git clone — это команда Git, которая используется для создания локальной копии удалённого репозитория. Она загружает все файлы и историю изменений из указанного URL.
+- `https://github.com/skl256/grafana_stack_for_docker.git` - Это URL удалённого репозитория на GitHub. В данном случае репозиторий называется grafana_stack_for_docker, и он принадлежит пользователю skl256.
+
+![изображение](https://github.com/user-attachments/assets/9c7f9699-27aa-4362-a924-aad2d29ff3ab)
+
+Рисунок 6 - Установка директории
+
+Прописала команду (рис. 7):
+```
+cd grafana_stack_for_docker
+```
+
+- Переход в директорию grafana_stack_for_docker
+
+![изображение](https://github.com/user-attachments/assets/c9830d37-dfcb-4796-8f65-c81a91da3c47)
+
+Риунок 7 - grafana_stack_for_docker
+
+Прописала команду (рис. 8):
+```
+sudo mkdir -p /mnt/common_volume/swarm/grafana/config
+```
+
+- mkdir — это утилита для создания директорий (папок) в Linux.
+- -p - Флаг -p указывает mkdir создавать не только указанную директорию, но и все необходимые родительские директории, если они ещё не существуют.
+- /mnt/common_volume/swarm/grafana/config - Это полный путь к директории, которую нужно создать.
+
+![изображение](https://github.com/user-attachments/assets/e617a74b-41e3-40fa-b3c5-c374debee1ac)
+
+Рисунок 8 - Создание директории
+
+Прописала команду (рис. 9):
+```
+sudo mkdir -p /mnt/common_volume/grafana/{grafana-config,grafana-data,prometheus-data}
+```
+
+- mkdir -p
+  - mkdir — это утилита для создания директорий.
+  - Флаг -p указывает mkdir, что нужно создать все необходимые родительские директории, если они ещё не существуют. Если какая-либо из родительских директорий уже существует, команда просто проигнорирует её.
+-  `/mnt/common_volume/grafana/{grafana-config,grafana-data,prometheus-data}` - Это путь к директориям, которые нужно создать. Синтаксис {} используется для создания нескольких директорий одновременно:
+  - grafana-config
+  - grafana-data
+  - prometheus-data
+
+![изображение](https://github.com/user-attachments/assets/9fc03782-7135-44df-bff2-aed9c5d94f90)
+
+Рисунок 9 - Создание ещё нескольких директорий
+
+Прописала команду (рис. 10):
+```
+sudo chown -R $(id -u):$(id -g) {/mnt/common_volume/swarm/grafana/config,/mnt/common_volume/grafana}
+```
+
+- chown — это утилита для изменения владельца и/или группы файлов и директорий.
+- -R - Флаг -R (рекурсивный) указывает, что изменения должны применяться ко всем файлам и поддиректориям внутри указанных директорий.
+- $(id -u):$(id -g) -Это команда, которая динамически определяет текущего пользователя и его группу:
+  - id -u: возвращает ID текущего пользователя.
+  - id -g: возвращает ID основной группы текущего пользователя.
+- {/mnt/common_volume/swarm/grafana/config,/mnt/common_volume/grafana} - Это список директорий, к которым применяется команда. Используется синтаксис фигурных скобок {}, чтобы указать несколько путей:
+  - /mnt/common_volume/swarm/grafana/config
+  - /mnt/common_volume/grafana
+
+![изображение](https://github.com/user-attachments/assets/39ed9fc7-a6f9-420d-9461-8f30564539de)
+
+Рисунок 10 - Группа директорий
+
+Прописала команду (рис. 11):
+```
+touch /mnt/common_volume/grafana/grafana-config/grafana.ini
+```
+
+- touch -  Утилита touch используется для создания пустых файлов или обновления временных меток существующих файлов.
+  - Если файл /mnt/common_volume/grafana/grafana-config/grafana.ini не существует, он будет создан.
+  - Если файл уже существует, его содержимое останется без изменений, но временная метка (timestamp) будет обновлена.
+- /mnt/common_volume/grafana/grafana-config/grafana.ini :
+  - Это полный путь к файлу, который нужно создать или обновить.
+  - В данном случае файл grafana.ini будет создан в директории /mnt/common_volume/grafana/grafana-config/.
+
+![изображение](https://github.com/user-attachments/assets/074703a9-4ee0-4094-a1d1-be5ea879ce67)
+
+Рисунок 11 - Файл
+
+Прописала команду (рис. 12):
+```
+cp config/* /mnt/common_volume/swarm/grafana/config/
+```
+
+- cp — это утилита для копирования файлов и директорий.
+- config/*
+  - config/ — это путь к исходной директории, из которой нужно скопировать файлы.
+  - * — это подстановочный символ (wildcard), который означает "все файлы" в указанной директории.
+- /mnt/common_volume/swarm/grafana/config/- Это путь к целевой директории, куда будут скопированы файлы.
+
+![изображение](https://github.com/user-attachments/assets/e8760fa5-b555-4110-9363-1a4362ce1185)
+
+Рисунок 12 - Копирование файлов
+
+Прописала команду (рис. 13):
+```
+mv grafana.yaml docker-compose.yaml
+```
+
+- mv — это утилита для перемещения или переименования файлов и директорий.
+- grafana.yaml - Это исходный файл, который нужно переименовать.
+- docker-compose.yaml - Это новое имя файла, которое будет присвоено после выполнения команды.
+
+![изображение](https://github.com/user-attachments/assets/ef122e25-cbfe-432a-aeec-7273f1081ad6)
+
+Рисунок 13 - Новое имя у файла
+
+Прописала команду (рис. 14):
+```
+sudo docker compose up -d
+```
+
+- docker compose — это команда Docker, которая используется для работы с сервисами, описанными в файле docker-compose.yaml. Она позволяет запускать, останавливать и управлять несколькими контейнерами одновременно.
+- Аргумент up указывает Docker Compose запустить все сервисы, описанные в файле docker-compose.yaml. Если контейнеры ещё не созданы, они будут созданы, а затем запущены.
+- Флаг -d (detached mode) указывает, что контейнеры должны быть запущены в фоновом режиме. Это означает, что терминал не будет "заблокирован" выводом логов контейнеров, и вы сможете продолжать использовать его для других задач.
+
+![изображение](https://github.com/user-attachments/assets/0491e3bd-7eb4-4032-85a3-5b0013d87f38)
+
+Рисунок 14 - Поднятие docker-compose
+
+## Задание 4
