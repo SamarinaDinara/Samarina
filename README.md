@@ -382,3 +382,28 @@ mv Samarina/prometheus.yaml /mnt/common_volume/swarm/grafana/config/
 
 Рисунок 8 - Перенос prometheus
 
+## Задание 5
+
+Зашла на сайт по адресу `localhost:3000`, перед этим подняв docker-compose (рис. 1). Вписала данные:
+
+- Логин: admin
+- Пароль: admin
+
+![изображение](https://github.com/user-attachments/assets/0dc93b8d-0a37-45b1-9de3-f18c7c7c5f44)
+
+Рисунок 1 - Сайт Grafana
+
+Создала новую data source с данными (рис. 2). После нажала Save & Test.
+
+- Connection: http://prometheus:9090
+- Authentication: Basic authentication
+
+![изображение](https://github.com/user-attachments/assets/0610bdcc-4369-4cfa-bb57-fcdc1860ed69)
+
+Рисунок 2 - Data source
+
+Всё это было сделано для того, чтобы создать новую Dashboard (рис. 3).
+
+![изображение](https://github.com/user-attachments/assets/24086b0e-abd8-4841-9a24-ed5d122205fb)
+
+Рисунок 3 - Dashboard
