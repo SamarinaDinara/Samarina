@@ -1,17 +1,23 @@
 # Samarina
-![image](https://github.com/user-attachments/assets/b8ceab10-d739-4fbb-8a99-34c341ce7eaf)
-![image](https://github.com/user-attachments/assets/81f08619-f9d3-47c6-815b-e4481306cfcd)
-![image](https://github.com/user-attachments/assets/64077fc5-4389-4988-92a1-a9ff6795bbaf)
-![image](https://github.com/user-attachments/assets/2ded414d-c904-4bf0-abb9-46e1347dfb2e)
-![image](https://github.com/user-attachments/assets/096d137f-ac27-4f06-b34c-145811425491)
-![image](https://github.com/user-attachments/assets/62f6614c-4cab-40c1-adcd-ddc28b57a8c8)
-![image](https://github.com/user-attachments/assets/0d3d8bbe-0e4b-4b63-823f-acc33bef2ed3)
-![image](https://github.com/user-attachments/assets/d082a419-fff9-429c-8e87-375bc6a45a90)
-![image](https://github.com/user-attachments/assets/0463eb55-3df1-4573-91b2-f06854cf5ca0)
-![image](https://github.com/user-attachments/assets/5c84daa9-3fef-4bff-9b18-52c0d5b3020f)
-![image](https://github.com/user-attachments/assets/8f3aea50-8ffd-4e0d-ba17-aba4cd0b39fe)
-![image](https://github.com/user-attachments/assets/5e10b50d-10a6-4603-ad07-a1a2a2f19e10)
-![image](https://github.com/user-attachments/assets/0bf1b290-c2d7-4edf-a0bf-2c654ec3c5f5)
-![image](https://github.com/user-attachments/assets/c1b17b1f-d1b9-4076-9baf-3e7da0583937)
-![image](https://github.com/user-attachments/assets/f7284076-b966-4bb5-80f5-242e08c478b3)
-![image](https://github.com/user-attachments/assets/e8ea19c4-7654-48a5-a4c0-ce62ae4a540a)
+## Задание 1
+
+Скачала виртуальную машину и гостевые дополнения (рис. 1).
+
+![изображение](https://github.com/user-attachments/assets/0e7b99b7-024b-493a-adf6-fe1cabbe3b2f)
+
+Рисунок 1 - ВМ и гостевые дополнения
+
+Прописала следующую команду (рис. 2):
+```cp
+sudo yum install wget
+```
+
+- sudo — это команда, которая позволяет выполнять другие команды с правами суперпользователя (администратора). Это необходимо, когда операция требует повышенных привилегий, например, установка программного обеспечения на уровне системы.
+- yum (Yellowdog Updater, Modified) — это пакетный менеджер, используемый в системах на базе Red Hat, таких как CentOS, RHEL (Red Hat Enterprise Linux), Fedora и других. Он отвечает за управление пакетами: установку, удаление, обновление и поиск программного обеспечения из репозиториев.
+- install — это аргумент для yum, который указывает, что нужно установить указанный пакет. В данном случае команда говорит пакетному менеджеру найти и установить программу.
+- wget — это утилита командной строки, предназначенная для загрузки файлов из интернета. Она поддерживает различные протоколы, такие как HTTP, HTTPS и FTP, и может работать в фоновом режиме, продолжая загрузку даже при разрыве соединения.
+
+![изображение](https://github.com/user-attachments/assets/e803929b-59b7-4e20-a0de-218052417082)
+
+Рисунок 2 - wget
+
