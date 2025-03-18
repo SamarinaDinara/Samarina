@@ -336,14 +336,49 @@ sudo docker compose ps
 
 Прописала команду (рис. 5):
 ```
-
+git clone https://github.com/SamarinaDinara/Samarina.git
 ```
 
+- git clone — это команда Git, которая используется для создания локальной копии удалённого репозитория. Она загружает все файлы и историю изменений из указанного URL.
+- `https://github.com/SamarinaDinara/Samarina.git` - Это URL удалённого репозитория на GitHub. В данном случае репозиторий называется Samarina, и он принадлежит пользователю SamarinaDinara.
 
+![изображение](https://github.com/user-attachments/assets/5bd17ecf-3c2f-45b4-9fea-90c984b94939)
 
-
+Рисунок 5 - Копирование файлов из моего репозитория
 
 Прописала команду (рис. 6):
 ```
-
+pwd
 ```
+
+- Утилита pwd используется для отображения абсолютного пути текущей директории.
+
+![изображение](https://github.com/user-attachments/assets/fb9b68d1-fe2a-47d1-96de-85002b38727c)
+
+Рисунок 6 - Полный путь
+
+Прописала следующую команду (рис. 7):
+```
+mv Samarina/docker-compose.yaml ./
+```
+
+- mv — это утилита для перемещения или переименования файлов и директорий.
+- Samarina/docker-compose.yaml - Это исходный путь к файлу, который нужно переместить. В данном случае файл docker-compose.yaml находится в директории Samarina/.
+- ./ - Это целевой путь, куда будет перемещён файл.
+
+![изображение](https://github.com/user-attachments/assets/602237f9-d070-4ea2-aa8d-9cab449a8a6e)
+
+Рисунок 7 - Бэкап docker-compose и перенос нового
+
+Прописала следующую команду (рис. 8):
+```
+mv Samarina/prometheus.yaml /mnt/common_volume/swarm/grafana/config/
+```
+
+- Samarina/prometheus.yaml - Это исходный путь к файлу, который нужно переместить. В данном случае файл prometheus.yaml находится в директории Samarina/.
+- /mnt/common_volume/swarm/grafana/config/ - Это целевой путь, куда будет перемещён файл. Файл будет помещён в директорию /mnt/common_volume/swarm/grafana/config/.
+
+![изображение](https://github.com/user-attachments/assets/9c1623bf-4de0-4dab-8f0a-2a8e0303aa49)
+
+Рисунок 8 - Перенос prometheus
+
