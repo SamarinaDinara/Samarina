@@ -47,7 +47,7 @@ sudo wget -P /etc/yum.repos.d/ https://download.docker.com/linux/centos/docker-c
 - -P /etc/yum.repos.d/
   - Опция -P указывает целевую директорию, куда будет сохранён загруженный файл.
   - В данном случае файл будет сохранён в /etc/yum.repos.d/.
-- URL: https://download.docker.com/linux/centos/docker-ce.repo — Это адрес файла, который нужно скачать. В данном случае это конфигурационный файл репозитория Docker Community Edition (CE) для CentOS.
+- URL: `https://download.docker.com/linux/centos/docker-ce.repo` — Это адрес файла, который нужно скачать. В данном случае это конфигурационный файл репозитория Docker Community Edition (CE) для CentOS.
 
 ![изображение](https://github.com/user-attachments/assets/8ea76c6f-5095-464d-ae87-4194b4a50d67)
 
