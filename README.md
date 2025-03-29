@@ -407,3 +407,71 @@ mv Samarina/prometheus.yaml /mnt/common_volume/swarm/grafana/config/
 ![изображение](https://github.com/user-attachments/assets/24086b0e-abd8-4841-9a24-ed5d122205fb)
 
 Рисунок 3 - Dashboard
+
+## Задание 6
+
+Создала новую DATA SOURCE с ссылкой `http//:victoriametrics:8428` (рис. 1).
+
+![изображение](https://github.com/user-attachments/assets/583175ea-3a0c-46e1-8040-46ff0fcb332b)
+
+Рисунок 1 - Виктория Метрик
+
+Прописала команду (рис. 2):
+
+```
+echo -e "# TYPE light_metric1 gauge\nlight_metric1 0" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus
+```
+
+Эта команда отправляет метрику в формате Prometheus в сервис, работающий на `localhost:8428` (VictoriaMetrics).
+
+1. **`echo -e "# TYPE light_metric1 gauge\nlight_metric1 0"`**:
+   - Создает текст в формате Prometheus exposition format:
+     - `# TYPE light_metric1 gauge` — указывает, что метрика `light_metric1` имеет тип `gauge`.
+     - `light_metric1 0` — значение метрики равно `0`.
+
+2. **`| curl --data-binary @-`**:
+   - Передает этот текст через pipe (`|`) в команду `curl`.
+   - `--data-binary @-` означает, что данные берутся из стандартного ввода (то есть из `echo`) и отправляются "как есть" (без изменений).
+
+3. **`http://localhost:8428/api/v1/import/prometheus`**:
+   - URL-адрес, куда отправляются данные. Это endpoint для импорта метрик в формате Prometheus.
+
+![изображение](https://github.com/user-attachments/assets/95989281-5913-422e-af10-b684981dbca0)
+
+Рисунок 2 - Отправка метрики
+
+После создала новый Dashboard с созданным DATA SOURCE (victoria), и получила результат после использования команды (рис. 3).
+
+![изображение](https://github.com/user-attachments/assets/bf9955ae-58e0-406e-86eb-88ad9c7b05ab)
+
+Рисунок 3 - Новый dashboard
+
+Вписала следующие команды, для выстраивание графика (рис. 4):
+
+```
+echo -e "# TYPE light_metric1 gauge\nlight_metric1 100" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus
+```
+
+
+```
+echo -e "# TYPE light_metric1 gauge\nlight_metric1 50" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus
+```
+
+
+```
+echo -e "# TYPE light_metric1 gauge\nlight_metric1 75" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus
+```
+
+![изображение](https://github.com/user-attachments/assets/f1cff0cd-1d11-4eff-b54e-0d7234aeac3d)
+
+![изображение](https://github.com/user-attachments/assets/7398f865-c0ff-4e30-82a9-25d05f70ab4f)
+
+Рисунок 4 - График и команды
+
+Следующее, что я сделал, это связала график с 0 и моими данными, после чего сохранила Dashboard (рис. 5).
+
+![изображение](https://github.com/user-attachments/assets/0f0c9f2b-b988-449b-9a7a-b7bc372b674d)
+
+![изображение](https://github.com/user-attachments/assets/54cdcc78-fca3-488a-996e-23509fef3312)
+
+Рисунок 5 - Готовый dashboard
